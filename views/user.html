@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #wrap {
+      width: 300px;
+      margin: 100px auto;
+      height: 150px;
+      text-align: center;
+      background-color: green;
+      color: white;
+    }
+    #wrap form {
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+    <div id="wrap">
+        <form action="/getuser" method="get">
+          <p>用户id：<input type="text" name="userid"></p>
+          <p><input type="submit" value="获取用户信息"></p>
+        </form>
+    </div>
+</body>
+</html>
