@@ -7,10 +7,20 @@ var multer = require('multer')
 var fs = require('fs')
 var adminRouter = require('./router/admin/index')
 var homeRouter = require('./router/home/index')
+var ejs = require('ejs')
+var body = require('./libs/body')
+// 设置模板目录
+app.set('views', path.join(__dirname, 'views'))
+app.engine('html', ejs.__express)
+app.set('view engine', 'html')
+
+// app.use(bodyParser.urlencoded({extended: false}))  中间件本质：函数
+app.use(body)
 
 app.use('/admin', adminRouter)
 app.use('/', homeRouter)
-app.use(bodyParser.urlencoded({extended: false}))
+
+
 // static 是express内置中间件(插件)
 /**
  * 
@@ -31,3 +41,4 @@ app.use(express.static('./public'))
 app.listen(3000, function (error) {
   console.log('listening on 3000')
 })
+

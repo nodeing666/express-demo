@@ -6,10 +6,66 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/color.css">
+  <!-- <link rel="stylesheet" href="/css/color.css"> -->
 </head>
 <body>
-  <h1>hello nodeing!!</h1>
-  <script src="/js/jquery.js"></script>
+  <!-- 需求 登录了 显示个人中心 没登录 显示登录注册 -->
+  <!-- 注意： 所有的逻辑代码必须要包到标签里面才能被ejs认识-->
+  <% if(isLogin) {  %>
+    <p>
+        <a href="">欢迎管理员登录！！！</a>
+        <a href="">个人中心</a>
+    </p>
+  
+  <% } else { %>
+    <p>
+        <a href="">登录</a>
+        <a href="">注册</a>
+    </p> 
+  <% } %>
+  <!-- 输出一个变量  = 浏览器原封不动输出标签 - 浏览器会解析标签 -->
+  <%= title %>
+  <%- title %>
+  <h1>服务端渲染</h1>
+  <ul> 
+      <% for (var i = 0; i < users.length; i++) {%>
+        <li><%= users[i].name %> ----> <%= users[i].age %></li>
+      <% } %>
+  </ul>
+  <!-- 
+     注意：1 在ejs中的语法  哪些是变量  哪些是控制语句  2 哪些是html标签
+     套路/规律： 只要是ejs中的语法 就用<%%>
+
+   -->
+  <% users.forEach(function(item){ %>
+     <h1><%= item.name %></h1>
+  <% }) %>
+
+  <% for(var i = 0; i < 10; i++) { %>
+     <h1><%= i %></h1>
+  <% } %>
+  <!-- 服务端渲染： 数据都是在后台就已经拼接好的 不需要去再请求后台拿数据 -->
+  <!-- <button>获取数据</button> -->
+  <!-- <p></p> -->
+  <!-- <script src="/js/jquery.js"></script>  -->
+  <!-- <script>
+    $(function(){
+      $("button").click(function(){
+        $.ajax({
+          method: 'get',
+          url: '/getinfo',
+          success: function (data) {
+            //
+            $("p").html(data)
+          }
+        })
+      })
+    })
+  </script> -->
+  <script>
+    //  在js里面 不能直接去使用模板中的变量
+    // console.log(users) js中的代码会直接交给浏览器去执行
+  
+  </script>
 </body>
 </html>
